@@ -1,0 +1,146 @@
+:root {
+    /* General customization */
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+  
+    color-scheme: normal;
+    color: #242424;
+  
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  
+    /* Colors */
+    --barsBackground: rgb(216, 216, 216);
+    --darkGray: #242424;
+    --lightgray: rgba(255, 255, 255, 0.87);
+    --lightgrayDarker: rgba(218, 218, 218, 0.87);
+    --mainColor: #0e3f3c;
+    --mainColorTsp: #0e3f3cad;
+    --secondaryColor: #b8e1d9;
+    --white: white;
+  
+
+    /* Sizes : this is used for layout calculation, so if an element size changes the layout doesn't break */
+    /* Header */
+    --headerHeight: 7vh;
+
+    /* SearchBar */
+    --formButtonSize : 100px;
+    --formGap : 20px;
+
+    /* Additional styling */
+    scrollbar-color: var(--mainColor) var(--lightgray);
+  }
+  
+  /* Main blocks style */
+  header {
+    position:fixed;
+    top:0;
+    width:100vw;
+    height: var(--headerHeight);
+    background-color: var(--lightgray);
+    color: var(--darkGray);
+    border-bottom: 1px solid rgb(229 229 229 / 87%);
+    box-shadow: 1px 2px 10px lightgray;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  header a {
+    color: var(--mainColor);
+    transition:200ms;
+  }
+  header a:hover {
+    color: var(--secondaryColor);
+  }
+  header span {
+    font-size: 40px !important;
+  }
+  main {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: calc(100vh - var(--headerHeight));
+    width: 100vw;
+    position: relative;
+    top: var(--headerHeight);
+  }
+  footer {
+    position:fixed;
+    bottom:0;
+    width:100vw;
+    height: var(--footerHeight);
+    background-color: var(--lightgray);
+    color: var(--darkGray);
+  }
+  body {
+    margin: 0;
+    min-width: 400px;
+    min-height: 100vh;
+    width:100vw;
+  }
+
+  /* General button CSS */
+  button {
+    cursor: pointer;
+    color: var(--white);
+    background-color:var(--mainColor);
+    border: 1px solid var(--mainColor);
+    border-radius: 5px;
+    transition: 200ms;
+  }
+  button:hover {
+    background-color:var(--secondaryColor);
+    border-color: var(--secondaryColor);
+    color: var(--mainColor);
+    font-weight:bold;
+  }
+  button:active {
+    background-color:var(--mainColor);
+    color: var(--white);
+    font-weight:bold;
+  }
+
+  /* Material icon setting */
+  .material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+  }
+
+/* Animation for loading spinner and overlay text */
+.scaleIn {
+	-webkit-animation: scaleIn 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: scaleIn 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes scaleIn {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes scaleIn {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
