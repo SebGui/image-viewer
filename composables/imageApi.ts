@@ -4,11 +4,9 @@ import {getReleventDataFromImage} from './utils/imageUtils'
 import useImageStore from '@/store/imageStore'
 
 export const getBaseImages = async (isAddToList?:boolean) => {
-    // access to actions
+    // Initialise store instance
     const imageStore = useImageStore()
-
-    // access to getters and state
-    const store = storeToRefs(imageStore)
+    imageStore.setIsLoading(true)
 
     try {
         await $fetch('/api/images?page='+imageStore.currentPage, {method: 'GET'}).then((result:any) => {
@@ -22,14 +20,13 @@ export const getBaseImages = async (isAddToList?:boolean) => {
     } catch (e) {
         console.log(e)
     }
+    imageStore.setIsLoading(false)
 }
 
 export const getFilteredImages = async (searchTerm:string, isAddToList?:boolean) => {
-    // access to actions
+    // Initialise store instance
     const imageStore = useImageStore()
-
-    // access to getters and state
-    //const store = storeToRefs(imageStore)
+    imageStore.setIsLoading(true)
 
     try {
         await $fetch('/api/images/'+searchTerm+'?searchTerm='+searchTerm, {method: 'GET'}).then((result:any) => {
@@ -39,14 +36,14 @@ export const getFilteredImages = async (searchTerm:string, isAddToList?:boolean)
     } catch (e) {
         console.log(e)
     }
+
+    imageStore.setIsLoading(false)
 }
 
 export const increasePageAngGetData = async (isNotFilter:boolean) => {
-        // access to actions
+        // Initialise store instance
         const imageStore = useImageStore()
-
-        // access to getters and state
-        const store = storeToRefs(imageStore)
+        imageStore.setIsLoading(true)
 
         try {
             if (isNotFilter === true) {
@@ -57,12 +54,9 @@ export const increasePageAngGetData = async (isNotFilter:boolean) => {
                 // Save last searchedTerm to send it here
                 //getFilteredImages(lastSearchTerm, true)
             }
-            /*await $fetch('/api/images/'+searchTerm+'?searchTerm='+searchTerm, {method: 'GET'}).then((result:any) => {
-                const dataArray = result.artObjects;
-                imageStore.setFilteredImageList(getReleventDataFromImage(dataArray))
-            })*/
         } catch (e) {
             console.log(e)
         }
 
+        imageStore.setIsLoading(false)
 }

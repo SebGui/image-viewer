@@ -1,5 +1,6 @@
 import type {Image} from '@/types/Image'
 
+// Only return the data we need for our platform : id, HQ image, smaller resolution image, title
 export const getReleventDataFromImage = (imageList:Image[]):Image[] => {
     return imageList.map((item:any):Image => {
         return {

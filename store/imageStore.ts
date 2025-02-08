@@ -16,7 +16,7 @@ const useImageStore = defineStore('imageStore', {
         currentPage: 1,
         filteredImageList: [],
         currentFilteredPage: 1,
-        isLoading: false
+        isLoading: true
     }),
     getters: {
         getImageList: (state):Image[] => state.imageList,
@@ -46,12 +46,6 @@ const useImageStore = defineStore('imageStore', {
         setIsLoading(isLoading:boolean) {
             this.isLoading = isLoading
         }
-
-        /*setMainImageList : (elementsToAdd:Image[]) => {
-            if (this !== undefined)
-                this.state.ImageList.push(elementsToAdd)
-            //console.log(this)
-        }*/
 
     }
 })

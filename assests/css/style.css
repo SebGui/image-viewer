@@ -114,6 +114,13 @@
     'opsz' 24
   }
 
+  .spinnerContainer {
+    width:100%;
+    margin-top: 20%;
+    display:flex;
+    justify-content: center;
+  }
+
 /* Animation for loading spinner and overlay text */
 .scaleIn {
 	-webkit-animation: scaleIn 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;

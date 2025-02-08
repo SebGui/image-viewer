@@ -3,39 +3,39 @@
         <!--Searchbar Component-->
         <SearchBar />
 
-        <!-- Image List component-->
-        <ImageList :isFilter="isFilter" :imagesData="filteredImageList"/> <!--:imagesData="store.filteredImageList.value"-->
+        <template v-if="isLoading">
+            <div class="spinnerContainer">
+                <Spinner class="scaleIn" :sizes="sizes"/>
+            </div>
+        </template>
+        <template v-else>
+            <!-- Image List component-->
+            <ImageList :isFilter="isFilter" :imagesData="filteredImageList"/>
 
-        <!--Load more button Component-->
-        <LoadMore />
+            <!--Load more button Component-->
+            <LoadMore />
+        </template>
+
     </div>
 </template>
 
 <script setup lang="ts">
     import useImageStore from '~/store/imageStore';
 
+    // Define values to pass as props
     const isFilter = true;
+    const sizes = ref({height: '200px', width:'200px'});
 
     // Get searchTerm from route
     const {searchTerm} = useRoute().params;
 
-    // access to actions
+    // Initialise out store instance
     const imageStore = useImageStore()
-    // access to getters and state
-    //const store = storeToRefs(imageStore)
-    const {filteredImageList} = storeToRefs(imageStore)
 
-    /*console.log(filteredImageList)
-    console.log(store.filteredImageList.value)*/
+    // Create refs from needed states
+    const {filteredImageList, isLoading} = storeToRefs(imageStore)
 
-    //console.log(searchTerm);
-
-    // Right way : for all image
-    //const {data:result} = await useFetch('/api/images')
-    // Right way : for filter image
-    //const {data:result2} = await useFetch('/api/images/'+searchTerm, {body:searchTerm})
-    //console.log(result2);
-
+    // onMounted Lifecycle hook
     onMounted(async () => {
         getFilteredImages(searchTerm.toString())
     });

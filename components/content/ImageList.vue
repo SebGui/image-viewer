@@ -1,40 +1,38 @@
 <template>
-    <div class="imageListWrapper">
-        <!-- [ADD] : check if empty show no results -->
-         <template v-if="listToShow.length === 0"><!--imagesData-->
-            No data yet<!-- Spinner ?-->
-         </template>
-         <template v-else>
-            <template v-for="item in listToShow" :key="item.id"><!--imagesData-->
+
+    <template v-if="listToShow.length === 0">
+        <div class="spinnerContainer">
+            <!-- Make proper no result found -->
+            No result found
+        </div>
+    </template>
+    <template v-else>
+        <div class="imageListWrapper">
+            <template v-for="item in listToShow" :key="item.id">
                 <SingleImage :imageData="item"/>
             </template>
-         </template>
-    </div>
+        </div>    
+    </template>
+
 </template>
 
 <script setup lang="ts">
     import type {Image} from '../../types/Image'
     import useImageStore from '~/store/imageStore';
-    const blockLength:number = 40;
-    const {imagesData, isFilter} = defineProps(['imagesData', 'isFilter'])
+
+    const {isFilter} = defineProps(['isFilter'])
 
     // access to actions
     const imageStore = useImageStore()
 
     // access to getters and state
     const store = storeToRefs(imageStore)
-    const {filteredImageList, imageList} = storeToRefs(imageStore)
 
     //const listToShow = (type === "filter") ? ref<Ref<Image[], Image[]>>(filteredImageList) : ref<Ref<Image[], Image[]>>(imageList)
-    let listToShow:ComputedRef<Image[]> = computed(() => {
-        //console.log(isFilter)
-        //listToShow = (type === "filter") ? store.filteredImageList.value : store.imageList.value
+    const listToShow:ComputedRef<Image[]> = computed(() => {
         return (isFilter === true) ? store.getFilteredImageList.value : store.getImageList.value
     });
 
-    /*onMounted(() => {
-        console.log(listToShow)
-    })*/
 </script>
 
 <style scoped>

@@ -1,7 +1,7 @@
 <template>
     <div>
         <template v-if="isLoading === true">
-            <Spinner class="scaleIn"/>
+            <Spinner class="scaleIn" :sizes="sizes" />
         </template>
         <template v-else>
             <button @click="handleLoadMore()" aria-roledescription="Button to load more images">Load more</button>
@@ -16,19 +16,17 @@ import {increasePageAngGetData} from '../../composables/imageApi'
 
     const {isNotFilter} = defineProps(['isNotFilter'])
     const isLoading = ref<boolean>(false)
+    const sizes = ref({height: '40px', width: '40px'})
 
     // access to actions
     const imageStore = useImageStore()
 
     // Make on click show spinner instead of text?
     const handleLoadMore = async () => {
-        console.log("Load more clicked");
-
         // To move in composable
         increasePageAngGetData(isNotFilter)
-        //(isNotFilter === true) ? imageStore.increaseCurrentPage : imageStore.currentFilteredPage
 
-        // Base test
+        // Base test : Make state in pinia for isLoadmoreLoading
         isLoading.value = true
         setTimeout(() => isLoading.value = false, 1000)
     }

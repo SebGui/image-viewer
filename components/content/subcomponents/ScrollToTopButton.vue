@@ -115,7 +115,7 @@
         }
         100% {
             -webkit-transform: translateZ(-1100px) translateY(1000px);
-                transform: translateZ(-1100px) translateY(1000px);
+                    transform: translateZ(-1100px) translateY(1000px);
             opacity: 0;
         }
     }
@@ -127,7 +127,7 @@
         }
         100% {
             -webkit-transform: translateZ(-1100px) translateY(1000px);
-                transform: translateZ(-1100px) translateY(1000px);
+                    transform: translateZ(-1100px) translateY(1000px);
             opacity: 0;
         }
     }

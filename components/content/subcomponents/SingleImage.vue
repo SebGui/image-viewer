@@ -1,13 +1,9 @@
 <template>
     <div class="singleImage imageBox">
-        <!--<img class="image" src="https://batiment.imag.fr/img/imag.png" alt="an image" height="100%" width="100%">
-        <div class="overlay">A text</div>-->
-        <img class="image" :src="imageData.headerImage" alt="Preview image" loading="lazy" width="100%" height="100%" 
-        sizes="(max-width: 430px) 200px, (max-width: 1280px) 95vw, (max-width: 991px) 92vw, 46vw"><!--height="100%" width="100%"-->
-        <img class="image hoverImg" :src="imageData.fullImage" alt="Full quality image" loading="lazy" width="100%" height="100%"/>
+        <!-- Here we use a double image system to show a preview before full size image, for load time and resources management -->
+        <img class="image" :src="imageData.headerImage" alt="Preview image" loading="lazy" height="100%" width="100%"/>
+        <img class="image hoverImg" :src="imageData.fullImage" alt="Full quality image" loading="lazy" height="100%" width="100%"/>
 
-        <!-- Went for div/background because the performances were awfull with img tag, API only provides huge images -->
-        <!--<div class="image" :style="'background: url('+imageData.webImage.url+')'"></div>-->
         <div class="overlay">{{imageData.title}}</div>
     </div>
 </template>
@@ -19,7 +15,7 @@
 <style scoped>
     * {box-sizing: border-box}
 
-    /*Test*/
+    /* Image preview on hover */
     .imageBox {
       position: relative;
       float: left;
@@ -30,14 +26,13 @@
       left: 0;
       top: 0;
       display: none;
-      /*transition: opacity 1s ease-out;
-    opacity: 1;*/
     }
 
     .imageBox:hover .hoverImg {
       display: block;
     }
 
+    /* Container CSS */
     .singleImage {
         position: relative;
         transition: 200ms;
@@ -51,22 +46,24 @@
         right: 2px;
         box-shadow: 5px 5px 5px 0 var(--secondaryColor);
     }
+    .singleImage:hover .overlay {
+        opacity: 1;
+    }
 
+    /* Apply animation to overlay display */
     .singleImage:hover .overlay {
         -webkit-animation: scaleIn 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	            animation: scaleIn 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     }
 
+    /* image CSS */
     .image {
         display: block;
         border-radius: 5px;
         object-fit: cover;
-        /*height: 100%;
-        width: 100%;*/
-        /*background-size: cover !important;
-        background-position: center !important;*/
     }
 
+    /* Overlay CSS */
     .overlay {
         position: absolute;
         bottom: 0;
@@ -88,9 +85,5 @@
         overflow: hidden;
         white-space: normal;
         text-overflow: ellipsis;
-    }
-
-    .singleImage:hover .overlay {
-        opacity: 1;
     }
 </style>

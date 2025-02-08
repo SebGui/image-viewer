@@ -1,5 +1,5 @@
 <template>
-    <div class="sk-circle">
+    <div class="sk-circle" :style="sizes">
       <div class="sk-circle1 sk-child"></div>
       <div class="sk-circle2 sk-child"></div>
       <div class="sk-circle3 sk-child"></div>
@@ -14,6 +14,12 @@
       <div class="sk-circle12 sk-child"></div>
     </div>
   </template>
+
+  <script setup lang="ts">
+    import { defineProps } from 'vue';
+
+    const {sizes} = defineProps(['sizes'])
+  </script>
   
   <style scoped>
   .sk-circle {
