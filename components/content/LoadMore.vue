@@ -18,11 +18,13 @@ import {increasePageAngGetData} from '../../composables/imageApi'
     const isLoading = ref<boolean>(false)
     const sizes = ref({height: '40px', width: '40px'})
 
-    // access to actions
+    // Store initialisation
     const imageStore = useImageStore()
 
-    // Make on click show spinner instead of text?
     const handleLoadMore = async () => {
+        // Save current searchTerm for after refresh cases
+        imageStore.setSearchTerm(window.location.pathname.split('/')[2])
+
         // To move in composable
         increasePageAngGetData(isNotFilter)
 

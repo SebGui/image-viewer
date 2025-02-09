@@ -1,13 +1,15 @@
 
-import type {Image} from '@/types/Image'
 import {getReleventDataFromImage} from './utils/imageUtils'
 import useImageStore from '@/store/imageStore'
 
 export const getBaseImages = async (isAddToList?:boolean) => {
     // Initialise store instance
     const imageStore = useImageStore()
+
+    // Set loading to true to trigger spinner subcomponent
     imageStore.setIsLoading(true)
 
+    // Get image flow
     try {
         await $fetch('/api/images?page='+imageStore.currentPage, {method: 'GET'}).then((result:any) => {
             const dataArray = result.artObjects;
@@ -20,43 +22,60 @@ export const getBaseImages = async (isAddToList?:boolean) => {
     } catch (e) {
         console.log(e)
     }
+
+    // Set loading to false to hide spinner subcomponent
     imageStore.setIsLoading(false)
 }
 
 export const getFilteredImages = async (searchTerm:string, isAddToList?:boolean) => {
     // Initialise store instance
     const imageStore = useImageStore()
+
+    // Set loading to true to trigger spinner subcomponent
     imageStore.setIsLoading(true)
 
+    // Get filtered image flow
     try {
-        await $fetch('/api/images/'+searchTerm+'?searchTerm='+searchTerm, {method: 'GET'}).then((result:any) => {
+        await $fetch('/api/images/'+searchTerm+'?searchTerm='+searchTerm+'&page='+imageStore.currentFilteredPage, {method: 'GET'}).then((result:any) => {
             const dataArray = result.artObjects;
-            imageStore.setFilteredImageList(getReleventDataFromImage(dataArray))
+
+            if (isAddToList === true) {
+                imageStore.addToFilteredImageList(getReleventDataFromImage(dataArray))
+            } else {
+                imageStore.setFilteredImageList(getReleventDataFromImage(dataArray))
+            }
         })
     } catch (e) {
         console.log(e)
     }
 
+    // Set loading to false to hide spinner subcomponent
     imageStore.setIsLoading(false)
 }
 
 export const increasePageAngGetData = async (isNotFilter:boolean) => {
         // Initialise store instance
         const imageStore = useImageStore()
+
+        // Set loading to true to trigger spinner subcomponent
         imageStore.setIsLoading(true)
 
+        // Get updated searchTerm ref
+        const {searchTerm} = storeToRefs(imageStore)
+
+        // Increase and get data flow
         try {
             if (isNotFilter === true) {
                 imageStore.increaseCurrentPage()
                 getBaseImages(true)
             } else {
                 imageStore.increaseCurrentFilterPage()
-                // Save last searchedTerm to send it here
-                //getFilteredImages(lastSearchTerm, true)
+                getFilteredImages(searchTerm.value, true)
             }
         } catch (e) {
             console.log(e)
         }
 
+        // Set loading to false to hide spinner subcomponent
         imageStore.setIsLoading(false)
 }

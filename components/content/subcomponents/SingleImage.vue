@@ -61,6 +61,11 @@
         display: block;
         border-radius: 5px;
         object-fit: cover;
+
+        /* Handles missing images cases */
+        background: url('/assests/imgNotFound.jpeg');
+        background-position: center;
+        background-size: cover;
     }
 
     /* Overlay CSS */

@@ -1,93 +1,104 @@
-# Nuxt Minimal Starter
+<!-- Anchor to top -->
+<a id="readme-top"></a>
+# Image viewer
+This project is a responsive ImageViewer.
 
-- Built with : Vite, TypeScript, Vue3, Nuxt3, Pinia, Google Fonts, 
-- Getting started :
-1/ Clone repository `git clone $repository`
-2/ run `npm install` in the cloned directory root
-3/ run `npm run dev` to the development server on `http://localhost:3000`:
-- Features : Header (home button), SearchBar (filters the image list), Image List (image with text overlay), Load More button (adds 20 more images, spinner on load), Back To Top button, Error page (description + back to home button)
-- License
+<details>
+  <summary>Table of Contents</summary>
+  <ul>
+    <li><a href="#builtwith">Built with</a></li>
+    <li><a href="#getting-started">Getting started</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#additional-notes">Additional notes</a></li>
+    <li><a href="#license">License</a></li>
+  </ul>
+</details>
 
-Additional notes :
-- Normaly we don't upload .env as it's a file containing secret keys to not expose to the client, but here for the sake of smooth installation it will be pushed to git
-- Could have done a "auto load more" on scroll reaching bottom, but following the guidelines we will leave the "Load More" button
-- Made use of /server folder to use correctly useRuntimeConfig for secret security
-- Could have added a "clear filter" button (in this version clicking home logo or making an empty research resets to the default first 20)
-- We could have implemented a store using Pinia here, but compare to what needed to be done it felt like an over-engineering
-- could have used masonry to have a better redenring on img tag (setting both height and width slows the page), it would be good looking but not really matching the wireframes
+*Image Viewer app is a simple, good looking, performant image browser, it can perform searches and is backed with rijksmuseum image API.*
 
-/* singleImage et image height et width */
+<a id="builtwith"></a>
+## Built with
+The project is built with : 
+- Vite
+- Vue 3
+- TypeScript
+- Pinia
+- Nuxt
+<br/>
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+with support of :
+- Vue Router
+- Google Fonts
+- Rijksmuseum API
 
-## Setup
+<p style="text-align:right">(<a href="#readme-top">back to top</a>)</p>
 
-Make sure to install dependencies:
+<a id="getting-started"></a>
+## Getting started
 
-```bash
-# npm
-npm install
+Clone repository:
+```git clone git@github.com:SebGui/image-viewer.git```
+(At the desired location)
 
-# pnpm
-pnpm install
+Install dependencies :
+```npm install```
+(In the root folder of the repository)
 
-# yarn
-yarn install
+Run local dev environment :
+```npm run dev```
+(Project will be visible at :  `http://localhost:3000`)
 
-# bun
-bun install
-```
+**Note** : For easier installation, i pushed my developement key to the API, but in a production context we wouldn't push our key to git, it is supposed to not be exposed.
 
-## Development Server
+<p style="text-align:right">(<a href="#readme-top">back to top</a>)</p>
 
-Start the development server on `http://localhost:3000`:
+<a id="features"></a>
+## Features
 
-```bash
-# npm
-npm run dev
+### Header
+#### The header contains a home icon linking to the root of the app.
 
-# pnpm
-pnpm dev
+### Search Bar
+#### The search bar is used to perform a filtered search depending on search terms, to submit press enter or click the submit button.
 
-# yarn
-yarn dev
+### Image List
+#### The image list shows by default 20 tiles, on hover (or click for mobile devices) you will see a bottom aligned overlay revealing the title of the image, the related animation/style for each single image, and the full resolution image. (if the image returns an error, a default image placeholder will be shown)
 
-# bun
-bun run dev
-```
+### Load More button
+#### The load more button gets the next 20 images to the related search (or default request), on click it will reveal a spinner and show the next requested images.
 
-## Production
+### Back to top button
+#### To enhance the UX, i added a back to top button to avoid scrolling a lot after an extended load more button interaction. Animation on reveal and on hide for a smoother flow.
 
-Build the application for production:
+### Error page
+#### Created an error page for all the request getting out of the scope of our router (or back requests). It show a short message, the error code, the error message, and a button to go back to the home page (it has a bit of styling, and is responsive).
 
-```bash
-# npm
-npm run build
+<p style="text-align:right">(<a href="#readme-top">back to top</a>)</p>
 
-# pnpm
-pnpm build
 
-# yarn
-yarn build
+<a id="additional-notes"></a>
+## Additionnal notes/features
 
-# bun
-bun run build
-```
+### Vue masonry
+We could have used vue-masonry library here, to make a fancy looking wall that based on the height of the images would create a wall of images of different sizes, leaving no blank spaces. 
 
-Locally preview production build:
+### Auto load more (on scroll)
+We could have done a "automatic load more" on the current scroll reaching (or getting close) the end.
 
-```bash
-# npm
-npm run preview
+### Clear filter
+We could have added a "clear filter" button to have a potential more obvious options to step back from a filtered search back to a global search.
 
-# pnpm
-pnpm preview
+### Detailed view
+We could have implemented a detail view where we would show more details about the image and a bigger view of the high quality images.
 
-# yarn
-yarn preview
+### Secret management
+Made use of /server folder to use correctly useRuntimeConfig for secret security/exposure
 
-# bun
-bun run preview
-```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+<p style="text-align:right">(<a href="#readme-top">back to top</a>)</p>
+
+<a id="license"></a>
+## License
+This project is licensed under Sebastien G.
+
+<p style="text-align:right">(<a href="#readme-top">back to top</a>)</p>

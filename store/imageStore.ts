@@ -7,6 +7,7 @@ type State = {
     currentPage: number
     filteredImageList: Image[]
     currentFilteredPage: number
+    searchTerm: string
     isLoading: boolean
 }
 
@@ -16,6 +17,7 @@ const useImageStore = defineStore('imageStore', {
         currentPage: 1,
         filteredImageList: [],
         currentFilteredPage: 1,
+        searchTerm: '',
         isLoading: true
     }),
     getters: {
@@ -23,6 +25,7 @@ const useImageStore = defineStore('imageStore', {
         getFilteredImageList: (state):Image[] => state.filteredImageList,
         getCurrentPage: (state):number => state.currentPage,
         getisLoading: (state):boolean => state.isLoading,
+        getSearchTerm: (state): string => state.searchTerm
     },
     actions: {
         setImageList(dataList:Image[]) {
@@ -45,6 +48,9 @@ const useImageStore = defineStore('imageStore', {
         },
         setIsLoading(isLoading:boolean) {
             this.isLoading = isLoading
+        },
+        setSearchTerm(searchTerm:string) {
+            this.searchTerm = searchTerm
         }
 
     }
