@@ -62,7 +62,7 @@ Run local dev environment :
 #### The search bar is used to perform a filtered search depending on search terms, to submit press enter or click the submit button.
 
 ### Image List
-#### The image list shows by default 20 tiles, on hover (or tap for mobile devices) you will see a bottom aligned overlay revealing the title of the image, the related animation/style for each single image, and the full resolution image. (if the image returns an error, a default image placeholder will be shown)
+#### The image list shows by default 20 tiles, on hover (or tap for mobile devices) you will see a bottom aligned overlay revealing the title of the image, the related animation/style for each single image, and the full resolution image. If the image returns an error, a default image placeholder will be shown. The choice of using a lower resolution image is to make the LCP and general resources management better.
 
 ### Load More button
 #### The load more button gets the next 20 images to the related search (or default request), on click it will reveal a spinner and show the next requested images.
@@ -89,7 +89,7 @@ We could have done a "automatic load more" on the current scroll reaching (or ge
 We could have added a "clear filter" button to have a potential more obvious options to step back from a filtered search back to a global search.
 
 ### Detailed view
-We could have implemented a detail view where we would show more details about the image and a bigger view of the high quality images.
+We could have implemented a detail view (separate page or modal using teleport) where we would show more details about the image and a bigger view of the high quality images.
 
 ### Secret management
 Made use of /server folder to use correctly useRuntimeConfig for secret security/exposure
