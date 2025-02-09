@@ -1,11 +1,11 @@
 <template>
-    <div class="singleImage imageBox">
+    <article class="singleImage imageBox">
         <!-- Here we use a double image system to show a preview before full size image, for load time and resources management -->
         <img class="image" :src="imageData.headerImage" alt="Preview image" loading="lazy" height="100%" width="100%"/>
         <img class="imageSimgle hoverImg" :src="imageData.fullImage" alt="Full quality image" loading="lazy" height="100%" width="100%"/>
 
         <div class="overlay">{{imageData.title}}</div>
-    </div>
+    </article>
 </template>
 
 <script setup lang="ts">
