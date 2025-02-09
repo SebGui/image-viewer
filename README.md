@@ -62,7 +62,7 @@ Run local dev environment :
 #### The search bar is used to perform a filtered search depending on search terms, to submit press enter or click the submit button.
 
 ### Image List
-#### The image list shows by default 20 tiles, on hover (or click for mobile devices) you will see a bottom aligned overlay revealing the title of the image, the related animation/style for each single image, and the full resolution image. (if the image returns an error, a default image placeholder will be shown)
+#### The image list shows by default 20 tiles, on hover (or tap for mobile devices) you will see a bottom aligned overlay revealing the title of the image, the related animation/style for each single image, and the full resolution image. (if the image returns an error, a default image placeholder will be shown)
 
 ### Load More button
 #### The load more button gets the next 20 images to the related search (or default request), on click it will reveal a spinner and show the next requested images.

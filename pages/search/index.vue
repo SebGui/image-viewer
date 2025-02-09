@@ -38,8 +38,4 @@
 </script>
 
 <style scoped>
-    .mainContent {
-        width: 80%;
-        margin: auto;
-    }
 </style>

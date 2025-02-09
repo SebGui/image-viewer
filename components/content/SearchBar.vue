@@ -12,11 +12,8 @@
 <script setup lang="ts">
     import useImageStore from '~/store/imageStore';
 
-    // access to actions
+    // Store initialisation
     const imageStore = useImageStore()
-
-    // access to getters and state
-    const store = storeToRefs(imageStore)
     
     // Initialise searchTerm
     const searchTerm = ref<string>('')

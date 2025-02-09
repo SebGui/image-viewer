@@ -1,6 +1,6 @@
-import {defineStore} from 'pinia'
+import { defineStore } from 'pinia'
 
-import type {Image} from '@/types/Image'
+import type { Image } from '@/types/Image'
 
 type State = {
     imageList: Image[]
@@ -9,6 +9,7 @@ type State = {
     currentFilteredPage: number
     searchTerm: string
     isLoading: boolean
+    isLoadmoreLoading: boolean
 }
 
 const useImageStore = defineStore('imageStore', {
@@ -18,13 +19,15 @@ const useImageStore = defineStore('imageStore', {
         filteredImageList: [],
         currentFilteredPage: 1,
         searchTerm: '',
-        isLoading: true
+        isLoading: true,
+        isLoadmoreLoading: false
     }),
     getters: {
         getImageList: (state):Image[] => state.imageList,
         getFilteredImageList: (state):Image[] => state.filteredImageList,
         getCurrentPage: (state):number => state.currentPage,
         getisLoading: (state):boolean => state.isLoading,
+        getIsLoadmoreLoading: (state): boolean => state.isLoadmoreLoading,
         getSearchTerm: (state): string => state.searchTerm
     },
     actions: {
@@ -48,6 +51,9 @@ const useImageStore = defineStore('imageStore', {
         },
         setIsLoading(isLoading:boolean) {
             this.isLoading = isLoading
+        },
+        setIsLoadmoreLoading(isLoadmoreLoading:boolean) {
+            this.isLoadmoreLoading = isLoadmoreLoading
         },
         setSearchTerm(searchTerm:string) {
             this.searchTerm = searchTerm

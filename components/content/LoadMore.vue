@@ -1,6 +1,6 @@
 <template>
     <div>
-        <template v-if="isLoading === true">
+        <template v-if="isLoadmoreLoading === true">
             <Spinner class="scaleIn" :sizes="sizes" />
         </template>
         <template v-else>
@@ -10,27 +10,28 @@
 </template>
 
 <script setup lang="ts">
-import useImageStore from '~/store/imageStore';
-import {increasePageAngGetData} from '../../composables/imageApi'
+    import useImageStore from '~/store/imageStore';
+    import {increasePageAngGetData} from '../../composables/imageApi'
 
-
+    // Local variable declaration/initialisation
     const {isNotFilter} = defineProps(['isNotFilter'])
-    const isLoading = ref<boolean>(false)
     const sizes = ref({height: '40px', width: '40px'})
 
     // Store initialisation
     const imageStore = useImageStore()
 
+    // Getting isLoadmoreLoading ref from our store
+    const {isLoadmoreLoading} = storeToRefs(imageStore)
+
     const handleLoadMore = async () => {
+        // Sets spinner to visible 
+        imageStore.setIsLoadmoreLoading(true)
+
         // Save current searchTerm for after refresh cases
-        imageStore.setSearchTerm(window.location.pathname.split('/')[2])
+        imageStore.setSearchTerm(useRoute().params.searchTerm.toString())
 
         // To move in composable
         increasePageAngGetData(isNotFilter)
-
-        // Base test : Make state in pinia for isLoadmoreLoading
-        isLoading.value = true
-        setTimeout(() => isLoading.value = false, 1000)
     }
 </script>
 

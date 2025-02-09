@@ -20,15 +20,14 @@
     import type {Image} from '../../types/Image'
     import useImageStore from '~/store/imageStore';
 
+    // Getting isFilter props
     const {isFilter} = defineProps(['isFilter'])
 
-    // access to actions
+    // Store initialisation
     const imageStore = useImageStore()
 
-    // access to getters and state
     const store = storeToRefs(imageStore)
 
-    //const listToShow = (type === "filter") ? ref<Ref<Image[], Image[]>>(filteredImageList) : ref<Ref<Image[], Image[]>>(imageList)
     const listToShow:ComputedRef<Image[]> = computed(() => {
         return (isFilter === true) ? store.getFilteredImageList.value : store.getImageList.value
     });

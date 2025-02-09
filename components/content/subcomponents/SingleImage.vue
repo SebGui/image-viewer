@@ -2,7 +2,7 @@
     <div class="singleImage imageBox">
         <!-- Here we use a double image system to show a preview before full size image, for load time and resources management -->
         <img class="image" :src="imageData.headerImage" alt="Preview image" loading="lazy" height="100%" width="100%"/>
-        <img class="image hoverImg" :src="imageData.fullImage" alt="Full quality image" loading="lazy" height="100%" width="100%"/>
+        <img class="imageSimgle hoverImg" :src="imageData.fullImage" alt="Full quality image" loading="lazy" height="100%" width="100%"/>
 
         <div class="overlay">{{imageData.title}}</div>
     </div>
@@ -66,6 +66,11 @@
         background: url('/assests/imgNotFound.jpeg');
         background-position: center;
         background-size: cover;
+    }
+    .imageSimgle {
+        display: block;
+        border-radius: 5px;
+        object-fit: cover;
     }
 
     /* Overlay CSS */

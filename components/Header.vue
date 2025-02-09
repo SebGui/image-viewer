@@ -12,6 +12,6 @@
 
 <style scoped>
     nav {
-        width: 80%;
+        width: var(--contentWidth);
     }
 </style>

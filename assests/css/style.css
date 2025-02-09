@@ -31,6 +31,9 @@
     --formButtonSize : 100px;
     --formGap : 20px;
 
+    /* Content */
+    --contentWidth : 80%;
+
     /* Additional styling */
     scrollbar-color: var(--mainColor) var(--lightgray);
   }
@@ -119,6 +122,11 @@
     margin-top: 20%;
     display:flex;
     justify-content: center;
+  }
+
+  .mainContent {
+    width: var(--contentWidth);
+    margin: auto;
   }
 
 /* Animation for loading spinner and overlay text */

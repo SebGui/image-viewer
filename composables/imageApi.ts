@@ -24,7 +24,7 @@ export const getBaseImages = async (isAddToList?:boolean) => {
     }
 
     // Set loading to false to hide spinner subcomponent
-    imageStore.setIsLoading(false)
+    hideLoaders()
 }
 
 export const getFilteredImages = async (searchTerm:string, isAddToList?:boolean) => {
@@ -50,7 +50,7 @@ export const getFilteredImages = async (searchTerm:string, isAddToList?:boolean)
     }
 
     // Set loading to false to hide spinner subcomponent
-    imageStore.setIsLoading(false)
+    hideLoaders()
 }
 
 export const increasePageAngGetData = async (isNotFilter:boolean) => {
@@ -77,5 +77,13 @@ export const increasePageAngGetData = async (isNotFilter:boolean) => {
         }
 
         // Set loading to false to hide spinner subcomponent
-        imageStore.setIsLoading(false)
+        hideLoaders()
+}
+
+// Hide loaders function
+const hideLoaders = () => {
+    const imageStore = useImageStore()
+
+    imageStore.setIsLoading(false)
+    imageStore.setIsLoadmoreLoading(false)
 }

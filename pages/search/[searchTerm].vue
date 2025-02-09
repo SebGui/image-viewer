@@ -43,7 +43,7 @@
 
 <style scoped>
     .mainContent {
-        width: 80%;
+        width: var(--contentWidth);
         margin: auto;
     }
 </style>
