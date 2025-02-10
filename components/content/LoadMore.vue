@@ -28,7 +28,9 @@
         imageStore.setIsLoadmoreLoading(true)
 
         // Save current searchTerm for after refresh cases
-        imageStore.setSearchTerm(useRoute().params.searchTerm.toString())
+        if (useRoute().params.searchTerm !== undefined) {
+            imageStore.setSearchTerm(useRoute().params.searchTerm.toString())
+        }
 
         // To move in composable
         increasePageAngGetData(isNotFilter)
