@@ -32,10 +32,10 @@
     // Getting the refs of needed states
     const {imageList, isLoading} = storeToRefs(imageStore)
 
-    onMounted(async () => {
+    /*onMounted(async () => {
         // Getting initial images (reference in composables/imageApi.ts)
         getBaseImages()
-    });
+    });*/
 </script>
 
 <style scoped>
