@@ -57,6 +57,7 @@
   header a {
     color: var(--mainColor);
     transition:200ms;
+    display: inline-block;
   }
   header a:hover {
     color: var(--secondaryColor);
